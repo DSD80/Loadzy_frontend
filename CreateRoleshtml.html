@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="logo.png" />
+  <title>Select Role - Loadzy</title>
+  <link rel="stylesheet" href="CreateRoles.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="logo">
+    <img src="logo.png" alt="Loadzy Logo">
+    <div class="title">
+      <strong>LOADZY</strong><br>
+      <span>LOAD. ROUTE. DELIVER</span>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <h2>SELECT YOUR ROLE TO CONTINUE</h2>
+    <p>Choose your role to access the appropriate dashboard and features</p>
+
+    <div class="card-container">
+      <!-- Admin Card -->
+      <div class="role-card">
+        <div class="circle-1">
+          <img class="icon-1" src="login/admin.png" alt="Loadzy Admin">
+        </div>
+        <h3>ADMIN</h3>
+        <p>Manages users, monitors operations, configures system, views reports.</p>
+        <button onclick="location.href='Signup-Admin.html'">Create As Admin</button>
+      </div>
+
+      <!-- Operator Card -->
+      <div class="role-card">
+        <div class="circle-2">
+          <img class="icon-2" src="login/operator.png" alt="Loadzy Operator">
+        </div>
+        <h3>OPERATOR</h3>
+        <p>Creates orders, assigns drivers, tracks deliveries, communicates updates.</p>
+        <button onclick="location.href='Signup-Op.html'">Create As Operator</button>
+      </div>
+
+      <!-- Driver Card -->
+      <div class="role-card">
+        <div class="circle-3">
+          <img  class="icon-3" src="login/driver.png" alt="Loadzy Driver">
+        </div>
+        <h3>DRIVER</h3>
+        <p>Receives tasks, follows routes, updates status, completes deliveries.</p>
+        <button onclick="location.href='Signup-Driver.html'">Create As Driver</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

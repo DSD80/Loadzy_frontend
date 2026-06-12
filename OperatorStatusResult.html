@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="icon" type="image/png" href="logo.png" />
+  <title>Operator Status of Vehicle---LOADZY</title>
+  <link rel="stylesheet" href="OperatorStatusResult.css">
+   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+  
+  <!-- Sidebar -->
+  <div class="sidebar">
+   
+    <div class="logo">
+      <img src="logo.png" alt="Loadzy Logo">
+      
+      <div class="title">
+        <strong>LOADZY</strong><br>
+        <span>LOAD. ROUTE. DELIVER</span>
+      </div>
+
+   
+    </div> 
+   
+    <img src="account and dash.png" alt="Top Right Image" class="top-right-image">
+
+    
+  
+    <div class="c">
+    <div class="nav">
+      <div onclick="location.href='opdash.html'" class="nav-item one d-flex flex-row">
+        <img src="dairy.png" class="img1">
+        <p class="tt">HISTORY OF TRIPS</p>
+        
+      
+    </div>
+      <div onclick="location.href='OperatorCurrentTrips.html'" class="nav-item two d-flex flex-row"><img src="notepad.png" class="img1"><p class="tt"> CURRENT TRIPS</p></div>
+      <div onclick="location.href='OperatorStatusOfVehicle.html'" class="nav-item five active d-flex flex-row"><img src="vehicle.png" class="img1"><p class="tt"> STATUS OF VEHICLES</p></div>
+      <div onclick="location.href='OperatorAssignNewTrip.html'" class="nav-item six d-flex flex-row"><img src="add.png" class="img1"><p class="tt"> ASSIGN NEW TRIPS</p></div>
+    </div>
+
+    <div class="bottom-nav">
+      <div onclick="location.href='OperatorAccountInfo.html'" class="nav-item three d-flex flex-row"><img src="account (2).png" class="img1"><p class="tt"> ACCOUNT</p></div>
+      <div onclick="location.href='index.html'" class="nav-item four d-flex flex-row"><img src="logout.png" class="img1"><p class="tt">LOGOUT</p></div>
+    </div>
+  </div>
+  </div>
+
+   <!-- Main Content -->
+  
+  <div class="main-content">
+    <h2>YOUR SEARCH RESULT...</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Vehicle Id</th>
+            
+            <th>Type</th>
+            <th>Capacity</th>
+            <th>Location</th>
+            <th></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr>
+            <td>V123</td>
+            <td>FlatBed</td>
+            <td>18–28 tons</td>
+            <td>Chennai</td>
+            <td><button class="track-btn">SELECT</button></td>
+          </tr>
+          <tr>
+            <td>V456</td>
+            <td>Eicher Pro 1049</td>
+            <td>4–5 tons</td>
+            <td>Chennai</td>
+            <td><button class="track-btn">SELECT</button></td>
+          </tr>
+          <tr>
+            <td>V789</td>
+            <td>Tata 407</td>
+            <td>2.25–2.5 tons</td>
+            <td>Chennai</td>
+            <td><button class="track-btn">SELECT</button></td>
+          </tr>
+          <tr>
+            <td>V290</td>
+            <td>Mahindra Jeeto</td>
+            <td>600–700 kg</td>
+            <td>Chennai</td>
+            <td><button class="track-btn">SELECT</button></td>
+          </tr>
+          <tr>
+            <td>V160</td>
+            <td>Tata Ace</td>
+            <td>600–750 Kg</td>
+            <td>Chennai</td>
+            <td><button class="track-btn">SELECT</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+           <!-- <th>Vehicle Id</th><!--<div class="vertical-line"></div>-->
+ </body>
+</html>
+

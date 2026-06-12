@@ -1,0 +1,167 @@
+body {
+ margin: 0;
+  font-family: 'Kumbh Sans', sans-serif;
+  /*background: linear-gradient(to bottom, #0b5964, #f8c39f);*/
+  background-image: url("bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+/* Logo positioning */
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.logo .title {
+  font-size: 12px;
+  line-height: 1.2;
+}
+.title strong{
+  font-family: 'Alegreya SC', serif;
+  font-size:20px;
+  margin-left:32px;
+}
+
+
+/* Main content */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+  text-align: center;
+}
+
+.main-content h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.main-content p {
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  color: #e0e0e0;
+}
+
+/* Cards container */
+.card-container {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.role-card {
+  padding: 25px 20px;
+  width: 240px;
+  height: 440px;
+  text-align: center;
+  
+  background: rgba(255, 255, 255, 0.2); 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.553);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.role-card .icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.icon-1{
+  position: absolute;
+  top: 10px;
+  width: 160px;
+  left: 67px;
+}
+.icon-2{
+  position: absolute;
+  top: 12px;
+  width: 150px;
+  left: 69px;
+}
+.icon-3{
+  position: absolute;
+  top: 10px;
+  width: 160px;
+  left: 62px;
+}
+.circle-1{
+  margin-top: 15px;
+  margin-left: 80px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid black;
+}
+.circle-2{
+  margin-top: 15px;
+  margin-left: 75px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid black;
+}
+.circle-3{
+  margin-top: 15px;
+  margin-left: 75px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.role-card h3 {
+  margin-top: 50px;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.role-card p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  color: #eaeaea;
+  margin-top: 40px;
+  line-height: 32px;
+  margin-left: 5px;
+  width: 240px;
+  text-align: center;
+}
+
+.role-card button {
+  background: linear-gradient(to right, #255f6e, #3a7384);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 170px;
+  height: 55px;
+  font-size: 15px;
+  box-shadow: 3px 3px 5px rgba(30, 25, 25, 0.573);
+}
+
+.role-card button:hover {
+  background: linear-gradient(to right, #3a7384, #255f6e);
+}
