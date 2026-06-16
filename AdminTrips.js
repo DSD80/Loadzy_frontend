@@ -1,35 +1,46 @@
-/*window.addEventListener("DOMContentLoaded", () => {
-  const tripStack = document.getElementById("trip-stack");
-  const trips = JSON.parse(localStorage.getItem("loadzy_trips")) || [];
+let pendingTrips = [];
+let drivers = [];
 
-  if (trips.length === 0) {
+window.addEventListener("DOMContentLoaded", async () => {
+  const tripStack = document.getElementById("trip-stack");
+
+  try {
+    const [tripData, driverData] = await Promise.all([
+      LoadzyAPI.request("/api/trips?status=pending"),
+      LoadzyAPI.request("/api/users/drivers")
+    ]);
+    pendingTrips = tripData.trips;
+    drivers = driverData.drivers;
+  } catch (err) {
+    tripStack.innerHTML = `<p>${err.message}</p>`;
+    return;
+  }
+
+  if (pendingTrips.length === 0) {
     tripStack.innerHTML = "<p>No pending trips yet.</p>";
     return;
   }
 
-  trips.forEach((trip, index) => {
+  pendingTrips.forEach((trip, index) => {
     const card = document.createElement("div");
     card.className = "trip-card";
     card.id = `trip-${index}`;
+    const options = drivers
+      .map((driver) => `<option value="${driver._id}">${driver.profile?.name || driver.username}</option>`)
+      .join("");
 
     card.innerHTML = `
       <strong>Trip #${index + 1}</strong><br>
-      Load: ${trip.loadType} (${trip.weight})<br>
-      Pickup: ${trip.pickup}<br>
-      Drop: ${trip.drop}<br>
-      Submitted on: ${trip.date}<br>
+      Load: ${trip.loadType} (${trip.loadWeight})<br>
+      Pickup: ${trip.pickupAddress}<br>
+      Drop: ${trip.dropAddress}<br>
+      Submitted on: ${new Date(trip.createdAt).toLocaleString()}<br>
       <button onclick="showDriverDropdown(${index})">Assign Driver</button>
       <div class="assign-driver-form" id="assign-form-${index}" style="display: none; margin-top: 10px;">
         <label for="driver-select-${index}">Select Driver:</label>
         <select id="driver-select-${index}">
           <option value="" disabled selected>Choose a driver</option>
-          <option value="Ram">Ram</option>
-          <option value="Kannan">Kannan</option>
-          <option value="Sham">Sham</option>
-          <option value="Mukundhan">Mukundhan</option>
-          <option value="Aravind">Aravind</option>
-          <option value="Rahul">Rahul</option>
-          <option value="Yogesh">Yogesh</option>
+          ${options}
         </select>
         <button onclick="assignDriver(${index})">Confirm</button>
       </div>
@@ -43,128 +54,27 @@ function showDriverDropdown(index) {
   document.getElementById(`assign-form-${index}`).style.display = 'flex';
 }
 
-function assignDriver(index) {
+async function assignDriver(index) {
   const select = document.getElementById(`driver-select-${index}`);
-  const driver = select.value;
+  const driverId = select.value;
 
-  if (!driver) {
+  if (!driverId) {
     alert("Please select a driver");
     return;
   }
 
-  // Simulate sending trip to driver
-  sendTripToDriver(driver, index);
+  const trip = pendingTrips[index];
 
-  // Remove the trip card from the view
-  const card = document.getElementById(`trip-${index}`);
-  if (card) {
-    card.remove();
-  }
+  try {
+    await LoadzyAPI.request(`/api/trips/${trip._id}/assign`, {
+      method: "PATCH",
+      body: JSON.stringify({ driverId })
+    });
 
-  // Remove the trip from localStorage permanently
-  let trips = JSON.parse(localStorage.getItem("loadzy_trips")) || [];
-  trips.splice(index, 1);
-  localStorage.setItem("loadzy_trips", JSON.stringify(trips));
-}
-
-function sendTripToDriver(driver, index) {
-  const trips = JSON.parse(localStorage.getItem("loadzy_trips")) || [];
-  const trip = trips[index];
-
-  // Simulate sending details to driver (console or alert)
-  alert(`Trip assigned to ${driver} with details:\nLoad: ${trip.loadType}\nFrom: ${trip.pickup}\nTo: ${trip.drop}`);
-}*/
-
-
-window.addEventListener("DOMContentLoaded", () => {
-  const tripStack = document.getElementById("trip-stack");
-  const trips = JSON.parse(localStorage.getItem("loadzy_trips")) || [];
-
-  if (trips.length === 0) {
-    tripStack.innerHTML = "<p>No pending trips yet.</p>";
-    return;
-  }
-
-  trips.forEach((trip, index) => {
-    const card = document.createElement("div");
-    card.className = "trip-card";
-    card.id = `trip-${index}`;
-
-    card.innerHTML = `
-      <strong>Trip #${index + 1}</strong><br>
-      Load: ${trip.loadType} (${trip.weight})<br>
-      Pickup: ${trip.pickup}<br>
-      Drop: ${trip.drop}<br>
-      Submitted on: ${trip.date}<br>
-      <button onclick="showDriverDropdown(${index})">Assign Driver</button>
-      <div class="assign-driver-form" id="assign-form-${index}" style="display: none; margin-top: 10px;">
-        <label for="driver-select-${index}">Select Driver:</label>
-        <select id="driver-select-${index}">
-          <option value="" disabled selected>Choose a driver</option>
-          <option value="Ram">Ram</option>
-          <option value="Sham">Sham</option>
-          <option value="Mukundhan">Mukundhan</option>
-          <option value="Jay">Jay</option>
-          <option value="Danial">Danial</option>
-        </select>
-        <button onclick="assignDriver(${index})">Confirm</button>
-      </div>
-      <hr/>
-    `;
-    tripStack.appendChild(card);
-  });
-});
-
-function showDriverDropdown(index) {
-  document.getElementById(`assign-form-${index}`).style.display = 'flex';
-}
-
-function assignDriver(index) {
-  const select = document.getElementById(`driver-select-${index}`);
-  const driver = select.value;
-
-  if (!driver) {
-    alert("Please select a driver");
-    return;
-  }
-
-  // Simulate sending trip to driver
-  sendTripToDriver(driver, index);
-
-  // Remove the trip card from the view
-  const card = document.getElementById(`trip-${index}`);
-  if (card) {
-    card.remove();
-  }
-
-  // Remove the trip from localStorage permanently
-  let trips = JSON.parse(localStorage.getItem("loadzy_trips")) || [];
-  const assignedTrip = trips.splice(index, 1)[0];
-  localStorage.setItem("loadzy_trips", JSON.stringify(trips));
-
-  // Add assigned trip as driver notification bubble count
-  const driverNotifications = JSON.parse(localStorage.getItem("driver_notifications")) || {};
-  if (!driverNotifications[driver]) {
-    driverNotifications[driver] = [];
-  }
-  driverNotifications[driver].push({
-    message: `New trip assigned: ${assignedTrip.loadType} from ${assignedTrip.pickup} to ${assignedTrip.drop}`,
-    time: new Date().toLocaleString()
-  });
-  localStorage.setItem("driver_notifications", JSON.stringify(driverNotifications));
-
-  // Update driver dashboard badge counter (if loaded in same session)
-  const badge = document.getElementById("notification-badge");
-  if (badge && driverNotifications[driver]) {
-    badge.textContent = driverNotifications[driver].length;
-    badge.style.display = "inline-block";
+    const card = document.getElementById(`trip-${index}`);
+    if (card) card.remove();
+    alert("Trip assigned successfully");
+  } catch (err) {
+    alert(err.message);
   }
 }
-
-function sendTripToDriver(driver, index) {
-  const trips = JSON.parse(localStorage.getItem("loadzy_trips")) || [];
-  const trip = trips[index];
-
-  // Simulate sending details to driver (console or alert)
-  alert(`Trip assigned to ${driver} with details:\nLoad: ${trip.loadType}\nFrom: ${trip.pickup}\nTo: ${trip.drop}`);
-} 
