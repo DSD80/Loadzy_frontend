@@ -128,10 +128,6 @@ function installAccountStyles() {
     .account-right {
       gap: 10px;
     }
-    .account-right .change-photo {
-      margin: 0;
-      width: 180px;
-    }
     .photo-modal .photo-options {
       gap: 14px;
       justify-content: center;

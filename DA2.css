@@ -220,7 +220,7 @@ body {
 
 
 .account-right {
-  position: absolute;
+  
   margin-left: auto;
   margin-top: 30px;
   display: flex;
@@ -232,12 +232,12 @@ body {
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  margin-left: 940px;
+  margin-left: 0;
 }
 
 .change-photo {
-  margin-top: 220px;
-  margin-left: 190px;
+  margin-top: 15px;
+  margin-left: 0;
   background: linear-gradient(to right, #255f6e, #3a7384);
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.689);
   padding: 10px 15px;
