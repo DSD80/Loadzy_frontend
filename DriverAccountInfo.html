@@ -3,164 +3,159 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Driver account information - Loadzy logistics platform" />
   <link rel="icon" type="image/png" href="logo.png" />
   <title>Account - Loadzy</title>
+  <title>My Account - Loadzy Driver</title>
+  <link rel="stylesheet" href="driver-shared.css" />
   <link rel="stylesheet" href="DriverAccountInfo.css" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
-  <!-- Sidebar -->
-   <div class="sidebar">
-    <div class="logo">
-      <img src="logo.png" alt="Loadzy Logo">
-      <div class="title">
-        <strong>LOADZY</strong><br>
-        <span>LOAD. ROUTE. DELIVER</span>
+
+  <!-- ═══════════════════════════════════════ SIDEBAR ═══ -->
+  <aside class="sidebar" role="navigation" aria-label="Driver Navigation">
+    <a class="sidebar-logo" href="DriverAccountInfo.html">
+      <img src="logo.png" alt="Loadzy Logo" />
+      <div class="logo-text">
+        <strong>LOADZY</strong>
+        <span>LOAD · ROUTE · DELIVER</span>
       </div>
+    </a>
+    <div class="sidebar-greeting">
+      <div class="greeting-label">Logged in as</div>
+      <div class="greeting-name" id="sidebar-driver-name">Driver</div>
     </div>
     
-
-
-    <div class="c">
-    <div class="nav">
-      <div onclick="location.href='Dashboard-Driver.html'" class="nav-item one  d-flex flex-row">
-        <img src="world.png" class="img1">
-        <p class="tt">DASHBOARD</p>
-      
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">My Pages</div>
+    
+      <a class="nav-item active" href="DriverAccountInfo.html" id="nav-account">
+        <img class="nav-icon" src="account (2).png" alt="" />
+        Account
+      </a>
+      <a class="nav-item" href="Dashboard_AssignedTrips-Driver.html" id="nav-assigned">
+        <img class="nav-icon" src="notepad.png" alt="" />
+        Assigned Trips
+        <span class="nav-badge" id="assigned-badge"></span>
+      </a>
+      <a class="nav-item" href="Dashboard_CompletedTrips-Driver.html" id="nav-completed">
+        <img class="nav-icon" src="icon1.png" alt="" />
+        Completed Trips
+      </a>
+      <a class="nav-item" href="canceltrips.html" id="nav-cancelled">
+        <img class="nav-icon" src="icon3.png" alt="" />
+        Cancelled Trips
+      </a>
+      <div class="sidebar-divider"></div>
+      <a class="nav-item" href="Helpdesk.html">
+        <img class="nav-icon" src="help desk.png" alt="" />
+        Help Desk
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="nav-item logout" id="logoutButton">
+        <img class="nav-icon" src="logout.png" alt="" />
+        Logout
+      </div>
+     
     </div>
-      <div onclick="location.href='Helpdesk.html'" class="nav-item two d-flex flex-row"><img src="help desk.png" class="img1"><p class="tt"> HELP DESK</p></div>
+  </aside>
+  <!-- ══════════════════════════════════════ MAIN CONTENT ═══ -->
+  <main class="main-content" role="main">
+    <div class="page-header">
+      <div>
+        <h1>Account Information</h1>
+        <p class="page-subtitle">View and update your profile details</p>
+      </div>
     </div>
-
-    <div class="bottom-nav">
-      <div class="nav-item active three d-flex flex-row"><img src="account (2).png" class="img1"><p class="tt"> ACCOUNT</p></div>
-      <div class="nav-item four d-flex flex-row" id="logoutButton"><img src="logout.png" class="img1"><p class="tt">LOGOUT</p></div>
-    </div>
-  </div>
-  </div>
-
-
-
-  <!-- Main Content -->
-  <div class="main-content">
-    <div class="account-card">
+    <!-- Account Card -->
+    <div class="account-card glass-card">
       <div class="account-left">
-        <h2>ACCOUNT INFORMATION</h2>
-
-        <form>
-  <div class="form-grid">
-    <!-- Column 1 -->
-    <div class="col-1">
-      <div class="form-group">
-        <label for="fullname">
-          FULL NAME
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="fullname" value="KIRAN" readonly />
-      </div>
-      <div class="form-group">
-        <label for="phone">
-          PHONE NUMBER
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="phone" value="9784539810" readonly />
-      </div>
-      <div class="form-group">
-        <label for="pan">
-          PAN NUMBER
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="pan" value="XXXXXXXXX" readonly />
-      </div>
-      <div class="form-group">
-        <label for="license">
-          LICENSE NUMBER
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="license" value="TN85HXX" readonly />
-      </div>
-      <div class="form-group">
-        <label for="vehicle">
-          COMFORTABLE VEHICLE
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="vehicle" value="CONTAINER TRUCK" readonly />
-      </div>
-    </div>
-
-    <!-- Column 2 -->
-    <div class="col-2">
-      <div class="form-group">
-        <label for="address">
-          ADDRESS
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="address" value="CHROMPET" readonly />
-      </div>
-      <div class="form-group">
-        <label for="username">
-          USERNAME
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="username" value="USER_321" readonly />
-      </div>
-      <div class="form-group">
-        <label for="password">
-          PASSWORD
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="password" id="password" value="password123" readonly />
-      </div>
-      <div class="form-group">
-        <label for="email">
-          EMAIL ID
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="email" id="email" value="kiran_123@gmail.com" readonly />
-      </div>
-    </div>
-  </div>
-</form>
-<button class="save-btn">SAVE</button>
-
+        <form id="account-form">
+          <div class="form-grid" id="form-grid-fields">
+            <!-- Fields rendered by account-api.js -->
+            <div class="col-1">
+              <div class="form-group">
+                <label for="fullname">FULL NAME <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="fullname" value="KIRAN" readonly />
+              </div>
+              <div class="form-group">
+                <label for="phone">PHONE NUMBER <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="phone" value="9784539810" readonly />
+              </div>
+              <div class="form-group">
+                <label for="pan">PAN NUMBER <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="pan" value="XXXXXXXXX" readonly />
+              </div>
+              <div class="form-group">
+                <label for="license">LICENSE NUMBER <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="license" value="TN85HXX" readonly />
+              </div>
+              <div class="form-group">
+                <label for="vehicle">COMFORTABLE VEHICLE <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="vehicle" value="CONTAINER TRUCK" readonly />
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="form-group">
+                <label for="address">ADDRESS <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="address" value="CHROMPET" readonly />
+              </div>
+              <div class="form-group">
+                <label for="username">USERNAME <img class="edit disabled-edit" src="pen.png" alt=""></label>
+                <input type="text" id="username" value="USER_321" data-locked="true" readonly />
+              </div>
+              <div class="form-group">
+                <label for="email">EMAIL ID <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="email" id="email" value="kiran_123@gmail.com" readonly />
+              </div>
+            </div>
+          </div>
+          <button type="button" class="save-btn" id="save-btn">SAVE CHANGES</button>
+        </form>
       </div>
       <div class="account-right">
-        <img class="profile" src="prf1.png" class="profile-photo" />
-        
+        <img class="profile" src="prf1.png" alt="Profile Photo" />
+        <button class="change-photo" type="button">CHANGE PHOTO</button>
       </div>
-      <button class="change-photo">CHANGE PHOTO</button>
+  </div>
+  </main>
+  <!-- Photo Modal -->
+  <div class="photo-modal" id="photoModal" role="dialog" aria-label="Change profile photo">
+    <div class="modal-box">
+      <span class="close-btn" id="closeModal">&#8592;</span>
+      <div class="photo-options">
+        <div class="option">
+          <img src="camera.png" alt="Camera" />
+          <button type="button">Camera</button>
+        </div>
+        <div class="option">
+          <img src="gallery.png" alt="Gallery" />
+          <button type="button">Gallery</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
-<div class="photo-modal" id="photoModal">
-  <div class="modal-box">
-    <span class="close-btn" id="closeModal">&#8592;</span>
-    <div class="photo-options">
-      <div class="option">
-        <img src="camera.png" alt="Camera Icon" />
-        <button>Camera</button>
-      </div>
-      <div class="option">
-        <img src="gallery.png" alt="Gallery Icon" />
-        <button>Gallery</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<div id="toast" class="toast">SAVED</div>
+  <div id="toast" class="toast">SAVED</div>
+  <div id="driver-toast" class="toast-msg"></div>
 
 <script src="loadzy-api.js"></script>
 <script src="account-api.js"></script>
 <script src="DriverAccountInfo.js"></script>
-
-
-
+  <script src="loadzy-api.js"></script>
+  <script src="account-api.js"></script>
+  <script src="DriverAccountInfo.js"></script>
+  <script>
+    // Load sidebar greeting
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = LoadzyAPI.user();
+      const nameEl = document.getElementById("sidebar-driver-name");
+      if (nameEl && user) {
+        nameEl.textContent = user.profile?.name || user.username || "Driver";
+      }
+    });
+  </script>
 </body>
 </html>

@@ -2,164 +2,250 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Driver dashboard overview - Loadzy logistics platform" />
   <link rel="icon" type="image/png" href="logo.png" />
   <title>Driver Dashboard - Loadzy</title>
   <link rel="stylesheet" href="Dashboard-Driver.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
  
   <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="driver-shared.css" />
+  <link rel="stylesheet" href="Dashboard-Driver.css" />
 </head>
 <body>
 
+  <!-- SIDEBAR -->
+  <aside class="sidebar" role="navigation" aria-label="Driver Navigation">
 
-  
-  
-
-
-  <div class="sidebar">
-    <div class="logo">
+    <a class="sidebar-logo" href="DriverAccountInfo.html">
       <img src="logo.png" alt="Loadzy Logo">
-      <div class="title">
-        <strong>LOADZY</strong><br>
-        <span>LOAD. ROUTE. DELIVER</span>
+      <div class="logo-text">
+        <strong>LOADZY</strong>
+        <span>LOAD · ROUTE · DELIVER</span>
+      </div>
+    </a>
+
+    <div class="sidebar-greeting">
+      <div class="greeting-label">Logged in as</div>
+      <div class="greeting-name" id="sidebar-driver-name">Driver</div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <div class="sidebar-section-label">My Pages</div>
+
+      <a class="nav-item active" href="#">
+        <img class="nav-icon" src="world.png" alt="">
+        Dashboard
+      </a>
+
+      <a class="nav-item" href="DriverAccountInfo.html">
+        <img class="nav-icon" src="account (2).png" alt="">
+        Account
+      </a>
+
+      <a class="nav-item" href="Dashboard_AssignedTrips-Driver.html">
+        <img class="nav-icon" src="notepad.png" alt="">
+        Assigned Trips
+        <span class="nav-badge" id="assigned-badge"></span>
+      </a>
+
+      <a class="nav-item" href="Dashboard_CompletedTrips-Driver.html">
+        <img class="nav-icon" src="icon1.png" alt="">
+        Completed Trips
+      </a>
+
+      <a class="nav-item" href="canceltrips.html">
+        <img class="nav-icon" src="icon3.png" alt="">
+        Cancelled Trips
+      </a>
+
+      <a class="nav-item" href="Helpdesk.html">
+        <img class="nav-icon" src="help desk.png" alt="">
+        Help Desk
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="nav-item logout" onclick="location.href='index.html'">
+        <img class="nav-icon" src="logout.png" alt="">
+        Logout
       </div>
     </div>
-    
 
+  </aside>
 
-    <div class="c">
-    <div class="nav">
-      <div class="nav-item one active d-flex flex-row">
-        <img src="world.png" class="img1">
-        <p class="tt">DASHBOARD</p>
-      
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <div class="page-header">
+      <div>
+        <h1 id="dash-welcome">Welcome back, Driver!</h1>
+        <p class="page-subtitle">
+          Here's a quick overview of your trips
+        </p>
+      </div>
     </div>
-      <div onclick="location.href='Helpdesk.html'" class="nav-item two d-flex flex-row"><img src="help desk.png" class="img1"><p class="tt"> HELP DESK</p></div>
+
+    <!-- OVERVIEW CARDS -->
+    <div class="overview-grid">
+
+      <a class="overview-card" href="Dashboard_AssignedTrips-Driver.html">
+        <div class="ov-icon">🚛</div>
+
+        <div class="ov-body">
+          <div class="ov-label">Assigned Trips</div>
+          <div class="ov-count" id="count-assigned">0</div>
+        </div>
+
+        <div class="ov-arrow">→</div>
+      </a>
+
+      <a class="overview-card green"
+         href="Dashboard_CompletedTrips-Driver.html">
+
+        <div class="ov-icon">✅</div>
+
+        <div class="ov-body">
+          <div class="ov-label">Completed Trips</div>
+          <div class="ov-count" id="count-completed">0</div>
+        </div>
+
+        <div class="ov-arrow">→</div>
+      </a>
+
+      <a class="overview-card red"
+         href="canceltrips.html">
+
+        <div class="ov-icon">🚫</div>
+
+        <div class="ov-body">
+          <div class="ov-label">Cancelled Trips</div>
+          <div class="ov-count" id="count-cancelled">0</div>
+        </div>
+
+        <div class="ov-arrow">→</div>
+      </a>
+
     </div>
-
-    <div class="bottom-nav">
-      <div onclick="location.href='DriverAccountInfo.html'" class="nav-item three d-flex flex-row"><img src="account (2).png" class="img1"><p class="tt"> ACCOUNT</p></div>
-      <div onclick="location.href='index.html'" class="nav-item four d-flex flex-row"><img src="logout.png" class="img1"><p class="tt">LOGOUT</p></div>
-    </div>
-  </div>
-  </div>
-
-    
-
-   <!-- Main Content -->
-<div class="main content">
-  <div class="trip-cards">
-<div class="card-1">
-      
-        <img class="icon1" src="icon1.png">
-       
-        <div onclick="location.href='Dashboard_CompletedTrips-Driver.html'" class="rec1">
-          <p >COMPLETED TRIPS</p>
-          <img onclick="location.href='Dashboard_CompletedTrips-Driver.html'" class="arrow1" src="arrow.png">
-      
-    </div>
-</div>
-
-<div class="icon-container">
- 
-  <span id="notification-badge" class="badge">0</span>
-</div>
-
-
-
-<div  class="card-2">
-      
-        <img class="icon2" src="icon2.png">
-        <div onclick="location.href='Dashboard_AssignedTrips-Driver.html'" class="rec2">
-          <p>ASSIGNED TRIPS</p>
-          <img onclick="location.href='Dashboard_AssignedTrips-Driver.html'" class="arrow2" src="arrow.png">
-    </div>
-</div>
-
-<div class="card-3">
-      
-        <img class="icon3" src="icon3.png">
-        <div onclick="location.href='canceltrips.html'" class="rec3">
-          <p>CANCELLED TRIPS</p>
-          <img onclick="location.href='canceltrips.html'" class="arrow3" src="arrow.png">
-      
-    </div>
-</div>
-
-
-  </div>
-</div>
-      
-
-
-
-<script>
-  let idleTime = 0;
-  const maxIdleSeconds = 100;
-
- 
-  setInterval(() => {
-    idleTime++;
-    if (idleTime === maxIdleSeconds) {
-      showIdleWarning();
-    }
-  }, 1000);
-
-  
-  ["mousemove", "keydown", "click", "scroll", "touchstart"].forEach(evt => {
-    document.addEventListener(evt, () => {
-      idleTime = 0;
-    });
-  });
-
-  function showIdleWarning() {
-    const warning = document.createElement("div");
-    warning.className = "idle-warning";
-    warning.innerHTML = `
-      <p>You’ve been inactive for a while. Still there?</p>
-      <button onclick="closeIdleWarning()">Yes, I'm here</button>
-    `;
-    document.body.appendChild(warning);
-  }
-
-  function closeIdleWarning() {
-    const warning = document.querySelector(".idle-warning");
-    if (warning) warning.remove();
-    idleTime = 0;
-  }
-
-
 
    
- 
-  window.addEventListener("DOMContentLoaded", () => {
-    const driver = "Ram"; // Change to dynamic name later
-    const notifications = JSON.parse(localStorage.getItem("driver_notifications")) || {};
-    const badge = document.getElementById("notification-badge");
-    const count = notifications[driver]?.length || 0;
 
-    if (count > 0) {
-      badge.textContent = count;
-      badge.style.display = "inline-block";
-    } else {
-      badge.style.display = "none";
+  </main>
+
+  <script src="loadzy-api.js"></script>
+  <script src="user-header.js"></script>
+
+  <script>
+
+    let idleTime = 0;
+    const maxIdleSeconds = 100;
+
+    document.addEventListener("DOMContentLoaded", async () => {
+
+      const user = LoadzyAPI.user();
+
+      const name =
+        user?.profile?.name ||
+        user?.username ||
+        "Driver";
+
+      const nameEl =
+        document.getElementById("sidebar-driver-name");
+
+      const welcomeEl =
+        document.getElementById("dash-welcome");
+
+      if (nameEl) nameEl.textContent = name;
+
+      if (welcomeEl) {
+        welcomeEl.textContent =
+          `Welcome back, ${name}!`;
+      }
+
+      try {
+
+        const { trips } =
+          await LoadzyAPI.request("/api/trips");
+
+        document.getElementById("count-assigned").textContent =
+          trips.filter(t =>
+            ["assigned", "in_transit"].includes(t.status)
+          ).length;
+
+        document.getElementById("count-completed").textContent =
+          trips.filter(t =>
+            t.status === "completed"
+          ).length;
+
+        document.getElementById("count-cancelled").textContent =
+          trips.filter(t =>
+            t.status === "cancelled"
+          ).length;
+
+      } catch (err) {
+        console.error(err);
+      }
+
+    });
+
+    setInterval(() => {
+
+      idleTime++;
+
+      if (idleTime >= maxIdleSeconds) {
+        showIdleWarning();
+      }
+
+    }, 1000);
+
+    ["mousemove", "keydown", "click", "scroll", "touchstart"]
+      .forEach(event => {
+
+        document.addEventListener(event, () => {
+          idleTime = 0;
+        });
+
+      });
+
+    function showIdleWarning() {
+
+      if (document.querySelector(".idle-warning"))
+        return;
+
+      const warning =
+        document.createElement("div");
+
+      warning.className = "idle-warning";
+
+      warning.innerHTML = `
+        <p>You’ve been inactive for a while. Still there?</p>
+        <button onclick="closeIdleWarning()">
+          Yes, I'm here
+        </button>
+      `;
+
+      document.body.appendChild(warning);
+
     }
-  });
 
+    function closeIdleWarning() {
 
+      const warning =
+        document.querySelector(".idle-warning");
 
+      if (warning) {
+        warning.remove();
+      }
 
+      idleTime = 0;
 
-  
-</script>
+    }
 
+  </script>
 
-
-
-  
-<script src="loadzy-api.js"></script>
-<script src="user-header.js"></script>
 </body>
 </html>

@@ -1,75 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-  <link rel="icon" type="image/png" href="logo.png" />
-  <title>Completed Trips - Loadzy</title>
-  <link rel="stylesheet" href="Dashboard_CompletedTrips-Driver.css">
-   <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Completed trips for driver - Loadzy logistics platform" />
+  <title>Completed Trips - Loadzy Driver</title>
+  <link rel="stylesheet" href="driver-shared.css" />
+  <link rel="stylesheet" href="Dashboard_CompletedTrips-Driver.css" />
 </head>
 <body>
-<img src="account and dash.png" alt="Top Right Image" class="top-right-image">
-
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="logo">
-      <img src="logo.png" alt="Loadzy Logo">
-      <div class="title">
-        <strong>LOADZY</strong><br>
-        <span>LOAD. ROUTE. DELIVER</span>
+  <!-- ═══════════════════════════════════════ SIDEBAR ═══ -->
+  <aside class="sidebar" role="navigation" aria-label="Driver Navigation">
+    <a class="sidebar-logo" href="DriverAccountInfo.html">
+      <img src="logo.png" alt="Loadzy Logo" />
+      <div class="logo-text">
+        <strong>LOADZY</strong>
+        <span>LOAD · ROUTE · DELIVER</span>
       </div>
+    </a>
+    <div class="sidebar-greeting">
+      <div class="greeting-label">Logged in as</div>
+      <div class="greeting-name" id="sidebar-driver-name">Driver</div>
     </div>
-
     
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">My Pages</div>
+    
+      <a class="nav-item" href="DriverAccountInfo.html" id="nav-account">
+        <img class="nav-icon" src="account (2).png" alt="" />
+        Account
+      </a>
+    
+      <a class="nav-item" href="Dashboard_AssignedTrips-Driver.html" id="nav-assigned">
+        <img class="nav-icon" src="notepad.png" alt="" />
+        Assigned Trips
+      </a>
 
-    <div class="c">
-    <div class="nav">
-      <div onclick="location.href='Dashboard-Driver.html'" class="nav-item one active d-flex flex-row">
-        <img src="world.png" class="img1">
-        <p  class="tt">DASHBOARD</p>
+      <a class="nav-item active" href="Dashboard_CompletedTrips-Driver.html" id="nav-completed">
+        <img class="nav-icon" src="icon1.png" alt="" />
+        Completed Trips
+      </a>
+    
+      <a class="nav-item" href="canceltrips.html" id="nav-cancelled">
+        <img class="nav-icon" src="icon3.png" alt="" />
+        Cancelled Trips
+      </a>
+      <div class="sidebar-divider"></div>
+      <a class="nav-item" href="Helpdesk.html">
+        <img class="nav-icon" src="help desk.png" alt="" />
+        Help Desk
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="nav-item logout" id="logoutButton">
+        <img class="nav-icon" src="logout.png" alt="" />
+        Logout
+      </div>
+    </div>
+  </aside>
       
-    </div>
-      <div onclick="location.href='Helpdesk.html'" class="nav-item two d-flex flex-row"><img src="help desk.png" class="img1"><p class="tt"> HELP DESK</p></div>
-    </div>
-
-    <div class="bottom-nav">
-      <div onclick="location.href='DriverAccountInfo.html'"  class="nav-item three d-flex flex-row"><img src="account (2).png" class="img1"><p class="tt"> ACCOUNT</p></div>
-      <div onclick="location.href='index.html'" class="nav-item four d-flex flex-row"><img src="logout.png" class="img1"><p class="tt">LOGOUT</p></div>
-    </div>
-  </div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="main-content">
-    <h2>Completed Trips</h2>
-
-    <div class="trip-cards">
-      <div class="trip-card">
-        <p class="pp"><strong>Pick Up Date:</strong> 28/01/2025</p>
-        <p class="pp"><strong>Drop Date:</strong> 29/01/2025</p>
-        <p class="pp"><strong>Vehicle type:</strong> Truck</p>
-        <div onclick="location.href='Complete2.html'"  class="dropdown-icon"><img src="expand arrow.png" class="ar"></div>
+  <!-- ══════════════════════════════════════ MAIN CONTENT ═══ -->
+  <main class="main-content" role="main">
+    <div class="page-header">
+      <div>
+        <h1>Completed Trips</h1>
+        <p class="page-subtitle">Your successfully delivered trips</p>
       </div>
+      <button class="refresh-btn" onclick="fetchCompletedTrips()" title="Refresh">⟳ Refresh</button>
+    </div>
 
-      <div class="trip-card">
-        <p class="pp"><strong>Pick Up Date:</strong> 25/01/2025</p>
-        <p class="pp"><strong>Drop Date:</strong> 25/01/2025</p>
-        <p class="pp"><strong>Vehicle type:</strong> Truck</p>
-        <div class="dropdown-icon">
-          <img onclick="location.href='Complete2.html'" src="expand arrow.png" class="ar">
-        </div>
+    <div class="trip-grid" id="completed-trips-grid">
+      <!-- Populated by DriverCompletedTrips.js -->
+      <div class="empty-state">
+        <div class="empty-icon">⏳</div>
+        <p>Loading completed trips...</p>
       </div>
     </div>
-  </div>
-
-
-
+  </main>
+  <div id="driver-toast" class="toast-msg"></div>
   
 <script src="loadzy-api.js"></script>
 <script src="user-header.js"></script>
+  <script src="DriverCompletedTrips.js"></script>
 </body>
 </html>

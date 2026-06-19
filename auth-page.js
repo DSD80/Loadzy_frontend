@@ -8,7 +8,7 @@ function roleFromPage() {
 function dashboardFor(role) {
   return {
     admin: "AdminDashboard.html",
-    driver: "Dashboard-Driver.html",
+    driver: "DriverAccountInfo.html",
     operator: "opdash.html"
   }[role];
 }
