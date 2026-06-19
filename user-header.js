@@ -1,111 +1,70 @@
-(function () {
-  const defaultPhoto = "account and dash.png";
 
-  function profileName(user) {
-    const profile = user?.profile || {};
-    return profile.name || profile.fullName || profile.organizationName || user?.username || "User";
+(function () {
+  const DEFAULT_PHOTO = "account (2).png";
+
+  function displayName(user) {
+    const p = user?.profile || {};
+    return (
+      p.name ||
+      p.fullName ||
+      p.organizationName ||
+      user?.username ||
+      "User"
+    );
   }
 
   function accountPage(role) {
-    return {
-      admin: "AdminAccInfo.html",
-      driver: "DriverAccountInfo.html",
-      operator: "OperatorAccountInfo.html"
-    }[role] || "index.html";
+    return (
+      { admin: "AdminAccInfo.html", driver: "DriverAccountInfo.html", operator: "OperatorAccountInfo.html" }[role] ||
+      "index.html"
+    );
   }
 
   function photoSrc(user) {
-    const photoUrl = user?.profile?.photoUrl;
-    return photoUrl ? `${LOADZY_API_URL}${photoUrl}` : defaultPhoto;
+    const url = user?.profile?.photoUrl;
+    return url ? `${LOADZY_API_URL}${url}` : DEFAULT_PHOTO;
   }
 
-  function installStyles() {
-    if (document.getElementById("loadzy-user-header-style")) return;
+  function applyToDOM(user) {
+    if (!user) return;
 
-    const style = document.createElement("style");
-    style.id = "loadzy-user-header-style";
-    style.textContent = `
-      .loadzy-user-summary {
-        position: absolute;
-        top: 24px;
-        right: 30px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        z-index: 50;
-        cursor: pointer;
-      }
-
-      .loadzy-user-summary .top-right-image {
-        position: static !important;
-        width: 46px !important;
-        height: 46px !important;
-        margin: 0 !important;
-        border-radius: 50%;
-        object-fit: cover;
-        background: #fff;
-        border: 2px solid rgba(0, 0, 0, 0.16);
-      }
-
-      .loadzy-user-name {
-        max-width: 180px;
-        font-family: "Kumbh Sans", Arial, sans-serif;
-        font-size: 16px;
-        font-weight: 700;
-        color: #1b1b1b;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        background: rgba(255, 255, 255, 0.82);
-        padding: 6px 10px;
-        border-radius: 8px;
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  function renderUserHeader(user) {
-    const image = document.querySelector(".top-right-image");
-    if (!image || !user) return;
-
-    installStyles();
-
-    let wrapper = document.querySelector(".loadzy-user-summary");
-    if (!wrapper) {
-      wrapper = document.createElement("div");
-      wrapper.className = "loadzy-user-summary";
-      image.parentNode.insertBefore(wrapper, image);
-      wrapper.appendChild(image);
+    /* profile picture */
+    const img = document.querySelector(".loadzy-user-summary .top-right-image");
+    if (img) {
+      img.src = photoSrc(user);
+      img.alt = displayName(user) + " profile photo";
+      img.onerror = function () { this.src = DEFAULT_PHOTO; };
     }
 
-    let name = wrapper.querySelector(".loadzy-user-name");
-    if (!name) {
-      name = document.createElement("span");
-      name.className = "loadzy-user-name";
-      wrapper.appendChild(name);
+    /* name text */
+    const nameEl = document.querySelector(".loadzy-user-summary .loadzy-user-name");
+    if (nameEl) {
+      nameEl.textContent = displayName(user);
     }
 
-    image.src = photoSrc(user);
-    image.alt = `${profileName(user)} profile photo`;
-    name.textContent = profileName(user);
-    wrapper.onclick = () => {
-      window.location.href = accountPage(user.role);
-    };
-    image.onclick = null;
+    /* make the whole pill navigate to the correct account page */
+    const wrapper = document.querySelector(".loadzy-user-summary");
+    if (wrapper) {
+      wrapper.onclick = function () {
+        window.location.href = accountPage(user.role);
+      };
+    }
   }
 
-  document.addEventListener("DOMContentLoaded", async () => {
-    if (!window.LoadzyAPI || !LoadzyAPI.token()) return;
+  document.addEventListener("DOMContentLoaded", async function () {
+    
+    // 1. Paint immediately from localStorage cache so the user sees data at once
+    const cached = LoadzyAPI.user();
+    console.log(cached)
+    if (cached) applyToDOM(cached);
 
-    const cachedUser = LoadzyAPI.user();
-    if (cachedUser) renderUserHeader(cachedUser);
-
+    // 2. Then refresh from the server so it stays up-to-date
     try {
       const { user } = await LoadzyAPI.request("/api/auth/me");
       localStorage.setItem("user", JSON.stringify(user));
-      renderUserHeader(user);
-    } catch (_err) {
-      if (cachedUser) renderUserHeader(cachedUser);
+      applyToDOM(user);
+    } catch (_) {
+      // network error – cached version already shown, nothing more to do
     }
   });
 })();
