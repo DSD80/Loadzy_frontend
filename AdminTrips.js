@@ -6,11 +6,18 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const [tripData, driverData] = await Promise.all([
-      LoadzyAPI.request("/api/trips?status=pending"),
+      LoadzyAPI.request("/api/trips"),
       LoadzyAPI.request("/api/users/drivers")
     ]);
-    pendingTrips = tripData.trips;
-    drivers = driverData.drivers;
+    const activeDriverIds = new Set();
+    tripData.trips.forEach(trip => {
+      if (trip.driver && (trip.status === "assigned" || trip.status === "in_transit")) {
+        activeDriverIds.add(trip.driver._id ? trip.driver._id.toString() : trip.driver.toString());
+      }
+    });
+    
+    pendingTrips = tripData.trips.filter(t => t.status === "pending" || t.status === "cancelled");
+    drivers = driverData.drivers.filter(d => !activeDriverIds.has(d._id.toString()));
   } catch (err) {
     tripStack.innerHTML = `<p>${err.message}</p>`;
     return;
