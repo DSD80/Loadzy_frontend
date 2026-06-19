@@ -44,3 +44,24 @@ const LoadzyAPI = {
     return `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}`;
   }
 };
+
+// Global interceptor for logout buttons
+document.addEventListener("click", (e) => {
+  const target = e.target.closest("div, button, a, img");
+  if (!target) return;
+  
+  const isLogout = 
+    target.id === "logoutButton" ||
+    (target.hasAttribute("onclick") && target.getAttribute("onclick").includes("index.html")) ||
+    (target.querySelector && target.querySelector("img[src='logout.png']"));
+
+  if (isLogout) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    const confirmLogout = confirm("Are you sure you want to log out?");
+    if (confirmLogout) {
+      LoadzyAPI.logout();
+    }
+  }
+}, true);

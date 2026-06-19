@@ -37,14 +37,3 @@ const modal = document.getElementById('photoModal');
 
 
 
-   document.addEventListener('DOMContentLoaded', () => {
-    const logoutBtn = document.getElementById('logoutButton');
-
-    logoutBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const confirmLogout = confirm("Are you sure you want to log out?");
-      if (confirmLogout) {
-        window.location.href = "index.html";
-      }
-    });
-  });
