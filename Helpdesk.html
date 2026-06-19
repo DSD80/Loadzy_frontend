@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 <body>
-
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="logo">
@@ -20,24 +19,40 @@
         <strong>LOADZY</strong><br>
         <span>LOAD. ROUTE. DELIVER</span>
       </div>
-    </div>
-
+    </div> 
+  
     <div class="c">
       <div class="nav">
         <div onclick="location.href='Dashboard-Driver.html'" class="nav-item one d-flex flex-row">
-          <img src="world.png" class="img1"><p class="tt"> DASHBOARD</p>
+          <img src="world.png" class="img1">
+          <p class="tt">DASHBOARD</p>
         </div>
-        <div class="nav-item active two d-flex flex-row">
-          <img src="help desk.png" class="img1"><p class="tt"> HELP DESK</p>
+        <div onclick="location.href='Dashboard_AssignedTrips-Driver.html'" class="nav-item two d-flex flex-row">
+          <img src="notepad.png" class="img1">
+          <p class="tt">ASSIGNED TRIPS</p>
+        </div>
+        <div onclick="location.href='Dashboard_CompletedTrips-Driver.html'" class="nav-item three d-flex flex-row">
+          <img src="icon1.png" class="img1">
+          <p class="tt">COMPLETED TRIPS</p>
+        </div>
+        <div onclick="location.href='canceltrips.html'" class="nav-item five d-flex flex-row">
+          <img src="icon3.png" class="img1">
+          <p class="tt">CANCELLED TRIPS</p>
+        </div>
+        <div onclick="location.href='Helpdesk.html'" class="nav-item active six d-flex flex-row">
+          <img src="help desk.png" class="img1">
+          <p class="tt">HELP DESK</p>
         </div>
       </div>
 
       <div class="bottom-nav">
         <div onclick="location.href='DriverAccountInfo.html'" class="nav-item three d-flex flex-row">
-          <img src="account (2).png" class="img1"><p class="tt"> ACCOUNT</p>
+          <img src="account (2).png" class="img1">
+          <p class="tt">ACCOUNT</p>
         </div>
-        <div class="nav-item four d-flex flex-row " id="logoutButton">
-          <img src="logout.png" class="img1"><p class="tt"> LOGOUT</p>
+        <div onclick="location.href='index.html'" class="nav-item four d-flex flex-row">
+          <img src="logout.png" class="img1">
+          <p class="tt">LOGOUT</p>
         </div>
       </div>
     </div>

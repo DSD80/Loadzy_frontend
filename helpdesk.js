@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const { messages } = await LoadzyAPI.request(`/api/chat/messages?room=${encodeURIComponent(room)}`);
-    body.innerHTML = "";
+    // body.innerHTML = "";
     messages.forEach(renderMessage);
   } catch (_err) {
-    body.innerHTML = "";
+    // body.innerHTML = "";
   }
 
   if (window.io && LoadzyAPI.token()) {
