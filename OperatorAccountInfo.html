@@ -3,159 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Driver account information - Loadzy logistics platform" />
   <link rel="icon" type="image/png" href="logo.png" />
   <title>Account - Loadzy</title>
   <link rel="stylesheet" href="OperatorAccountInfo.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="driver-shared.css"/>
 </head>
 <body>
+
 
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="logo">
-      <img src="logo.png" alt="Loadzy Logo" />
+      <img src="logo.png" alt="Loadzy Logo">
       <div class="title">
-        <strong>LOADZY</strong><br />
+        <strong>LOADZY</strong><br>
         <span>LOAD. ROUTE. DELIVER</span>
       </div>
-    </div>
-
+    </div> 
+  
     <div class="c">
-    <div class="nav">
-      <div onclick="location.href='opdash.html'" class="nav-item one d-flex flex-row">
-        <img src="dairy.png" class="img1">
-        <p class="tt">HISTORY OF TRIPS</p>
-        
-      
-    </div>
-      <div onclick="location.href='OperatorCurrentTrips.html'" class="nav-item two d-flex flex-row"><img src="notepad.png" class="img1"><p class="tt"> CURRENT TRIPS</p></div>
-      <div onclick="location.href='OperatorStatusOfVehicle.html'" class="nav-item five d-flex flex-row"><img src="vehicle.png" class="img1"><p class="tt"> STATUS OF VEHICLES</p></div>
-      <div onclick="location.href='OperatorAssignNewTrip.html'" class="nav-item six d-flex flex-row"><img src="add.png" class="img1"><p class="tt"> ASSIGN NEW TRIPS</p></div>
-    </div>
+      <div class="nav">
+        <div onclick="location.href='opdash.html'" class="nav-item one d-flex flex-row">
+          <img src="dairy.png" class="img1">
+          <p class="tt">HISTORY OF TRIPS</p>
+        </div>
+        <div onclick="location.href='OperatorCurrentTrips.html'" class="nav-item two d-flex flex-row">
+          <img src="notepad.png" class="img1">
+          <p class="tt">CURRENT TRIPS</p>
+        </div>
+        <div onclick="location.href='OperatorStatusOfVehicle.html'" class="nav-item three d-flex flex-row">
+          <img src="vehicle.png" class="img1">
+          <p class="tt">STATUS OF VEHICLES</p>
+        </div>
+        <div onclick="location.href='OperatorAssignNewTrip.html'" class="nav-item five d-flex flex-row">
+          <img src="add.png" class="img1">
+          <p class="tt">ASSIGN NEW TRIP</p>
+        </div>
+      </div>
 
-    <div class="bottom-nav">
-      <div class="nav-item active three d-flex flex-row"><img src="account (2).png" class="img1"><p class="tt"> ACCOUNT</p></div>
-      <div class="nav-item four d-flex flex-row " id="logoutButton"><img src="logout.png" class="img1"><p class="tt">LOGOUT</p></div>
+      <div class="bottom-nav">
+        <div onclick="location.href='OperatorAccountInfo.html'" class="nav-item active three d-flex flex-row">
+          <img src="account (2).png" class="img1">
+          <p class="tt">ACCOUNT</p>
+        </div>
+        <div onclick="location.href='index.html'" class="nav-item four d-flex flex-row">
+          <img src="logout.png" class="img1">
+          <p class="tt">LOGOUT</p>
+        </div>
+      </div>
     </div>
   </div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="main-content">
-    <div class="account-card">
+  <!-- ══════════════════════════════════════ MAIN CONTENT ═══ -->
+  <main class="main-content" role="main">
+    <div class="page-header">
+      <div>
+        <h1>Account Information</h1>
+        <p class="page-subtitle">View and update your profile details</p>
+      </div>
+    </div>
+    <!-- Account Card -->
+    <div class="account-card glass-card">
       <div class="account-left">
-        <h2>ACCOUNT INFORMATION</h2>
-
-        <form>
-  <div class="form-grid">
-    <!-- Column 1 -->
-    <div class="col-1">
-      <div class="form-group">
-        <label for="fullname">
-          FULL NAME
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="fullname" value="SARVESH" readonly />
+        <form id="account-form">
+          <div class="form-grid" id="form-grid-fields">
+            
+            <div class="col-1">
+              <div class="form-group">
+                <label for="fullname">FULL NAME <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="fullname" value="KIRAN" readonly />
+              </div>
+              <div class="form-group">
+                <label for="phone">EMAIL ID <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="phone" value="9784539810" readonly />
+              </div>
+              <div class="form-group">
+                <label for="pan">PHONE NUMBER <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="pan" value="XXXXXXXXX" readonly />
+              </div>
+              <div class="form-group">
+                <label for="license">PAN NUMBER <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="license" value="TN85HXX" readonly />
+              </div>
+              <div class="form-group">
+                <label for="vehicle">ORGANIZATION NAME <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="vehicle" value="CONTAINER TRUCK" readonly />
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="form-group">
+                <label for="address">ADDRESS OF ORGANIZATION <img class="edit" src="pen.png" alt="Edit"></label>
+                <input type="text" id="address" value="CHROMPET" readonly />
+              </div>
+              <div class="form-group">
+                <label for="username">USERNAME<img class="edit disabled-edit" src="pen.png" alt=""></label>
+                <input type="text" id="username" value="USER_321" data-locked="true" readonly />
+              </div>
+            </div>
+          </div>
+          <button type="button" class="save-btn" id="save-btn">SAVE CHANGES</button>
+        </form>
+    
       </div>
-      <div class="form-group">
-        <label for="phone">
-          PHONE NUMBER
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="phone" value="9784539810" readonly />
-      </div>
-      <div class="form-group">
-        <label for="pan">
-          PAN NUMBER
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="pan" value="XXXXXXXXX" readonly />
-      </div>
-      <div class="form-group">
-        <label for="license">
-          ORGANIZATION NAME
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="license" value="SAMSUNG" readonly />
-      </div>
-      <div class="form-group">
-        <label for="vehicle">
-          ADDRESS OF ORGANIZATION
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="vehicle" value="MADAMBAKKAM, CHENNAI" readonly />
-      </div>
-    </div>
-
-    <!-- Column 2 -->
-    <div class="col-2">
-      <div class="form-group">
-        <label for="address">
-          USERNAME
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="address" value="USER_123" readonly />
-      </div>
-      <div class="form-group">
-        <label for="username">
-         PASSWORD
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="text" id="username" value="**********" readonly />
-      </div>
-      <div class="form-group">
-        <label for="password">
-          EMAIL ID
-          <img class="edit" src="pen.png">
-        </label>
-        <input type="password" id="password" value="sarvesh1980@gmail.com" readonly />
-      </div>
-      
-    </div>
-  </div>
-</form>
-<button class="save-btn">SAVE</button>
-
-
-      </div>
-
       <div class="account-right">
-        <img src="prf1.png"  class="profile" />
-        
+        <img class="profile" src="account (2).png" alt="Profile Photo" />
+        <button class="change-photo" type="button">CHANGE PHOTO</button>
       </div>
-      <button class="change-photo">CHANGE PHOTO</button>
+  </div>
+  </main>
+
+  <div class="photo-modal" id="photoModal" role="dialog" aria-label="Change profile photo">
+    <div class="modal-box">
+      <span class="close-btn" id="closeModal">&#8592;</span>
+      <div class="photo-options">
+        <div class="option">
+          <img src="camera.png" alt="Camera" />
+          <button type="button">Camera</button>
+        </div>
+        <div class="option">
+          <img src="gallery.png" alt="Gallery" />
+          <button type="button">Gallery</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
-
-  <div class="photo-modal" id="photoModal">
-  <div class="modal-box">
-    <span class="close-btn" id="closeModal">&#8592;</span>
-    <div class="photo-options">
-      <div class="option">
-        <img src="camera.png" alt="Camera Icon" />
-        <button>Camera</button>
-      </div>
-      <div class="option">
-        <img src="gallery.png" alt="Gallery Icon" />
-        <button>Gallery</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
+  <div id="toast" class="toast">SAVED</div>
+  <div id="driver-toast" class="toast-msg"></div>
 
 <script src="loadzy-api.js"></script>
 <script src="account-api.js"></script>
 <script src="OperatorAccountInfo.js"></script>
-
-<div id="toast" class="toast">SAVED</div>
-
-
-<script src="user-header.js"></script>
+  <script>
+    // Load sidebar greeting
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = LoadzyAPI.user();
+      const nameEl = document.getElementById("sidebar-driver-name");
+      if (nameEl && user) {
+        nameEl.textContent = user.profile?.name || user.username || "Driver";
+      }
+    });
+  </script>
 </body>
 </html>
