@@ -22,7 +22,10 @@
       </div>
     </div>
 
-    <img onclick="location.href='AdminAccInfo.html'" src="account and dash.png" class="top-right-image">
+  <div class="loadzy-user-summary" onclick="location.href='AdminAccInfo.html'" style="position: absolute; top: 24px; right: 30px; display: flex; align-items: center; gap: 12px; z-index: 50; cursor: pointer; background: rgba(255, 255, 255, 0.1); padding: 6px 16px 6px 6px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s, transform 0.2s;">
+  <img src="" alt="Profile" class="top-right-image" style="position: static !important; width: 40px !important; height: 40px !important; margin: 0 !important; border-radius: 50%; object-fit: cover; background: #fff; border: 2px solid rgba(255, 255, 255, 0.8);">
+  <span class="loadzy-user-name" id="sidebar-driver-name" style="max-width: 180px; font-family: 'Kumbh Sans', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">User</span>
+  </div>
 
     <div class="c">
     <div class="nav">
@@ -73,8 +76,8 @@
   }
 </script>
 
-<!--<script src="AdminDashboard.js"></script>-->
 <script src="loadzy-api.js"></script>
+<script src="AdminDashboard.js"></script>
 <script src="user-header.js"></script>
 </body>
 </html>

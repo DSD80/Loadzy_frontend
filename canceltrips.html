@@ -16,52 +16,57 @@
 <body>
 
   <!-- ═══════════════════════════════════════ SIDEBAR ═══ -->
-  <aside class="sidebar" role="navigation" aria-label="Driver Navigation">
-    <a class="sidebar-logo" href="DriverAccountInfo.html">
-      <img src="logo.png" alt="Loadzy Logo" />
-      <div class="logo-text">
-        <strong>LOADZY</strong>
-        <span>LOAD · ROUTE · DELIVER</span>
+<div class="loadzy-user-summary" onclick="location.href='DriverAccountInfo.html'" style="position: absolute; top: 24px; right: 30px; display: flex; align-items: center; gap: 12px; z-index: 50; cursor: pointer; background: rgba(255, 255, 255, 0.1); padding: 6px 16px 6px 6px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s, transform 0.2s;">
+  <img src="account (2).png" alt="Profile" class="top-right-image" style="position: static !important; width: 40px !important; height: 40px !important; margin: 0 !important; border-radius: 50%; object-fit: cover; background: #fff; border: 2px solid rgba(255, 255, 255, 0.8);">
+  <span class="loadzy-user-name" id="sidebar-driver-name" style="max-width: 180px; font-family: 'Kumbh Sans', Arial, sans-serif; font-size: 15px; font-weight: 700; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Driver</span>
+</div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <img src="logo.png" alt="Loadzy Logo">
+      <div class="title">
+        <strong>LOADZY</strong><br>
+        <span>LOAD. ROUTE. DELIVER</span>
       </div>
-    </a>
-    <div class="sidebar-greeting">
-      <div class="greeting-label">Logged in as</div>
-      <div class="greeting-name" id="sidebar-driver-name">Driver</div>
-    </div>
-    
-    <nav class="sidebar-nav">
-      <div class="sidebar-section-label">My Pages</div>
-     
-      
-      <a class="nav-item" href="DriverAccountInfo.html" id="nav-account">
-        <img class="nav-icon" src="account (2).png" alt="" />
-        Account
-      </a>
-      <a class="nav-item" href="Dashboard_AssignedTrips-Driver.html" id="nav-assigned">
-        <img class="nav-icon" src="notepad.png" alt="" />
-        Assigned Trips
-      </a>
-      <a class="nav-item" href="Dashboard_CompletedTrips-Driver.html" id="nav-completed">
-        <img class="nav-icon" src="icon1.png" alt="" />
-        Completed Trips
-      </a>
-      <a class="nav-item active" href="canceltrips.html" id="nav-cancelled">
-        <img class="nav-icon" src="icon3.png" alt="" />
-        Cancelled Trips
-      </a>
-      <div class="sidebar-divider"></div>
-      <a class="nav-item" href="Helpdesk.html">
-        <img class="nav-icon" src="help desk.png" alt="" />
-        Help Desk
-      </a>
-    </nav>
-    <div class="sidebar-bottom">
-      <div class="nav-item logout" id="logoutButton">
-        <img class="nav-icon" src="logout.png" alt="" />
-        Logout
+    </div> 
+  
+    <div class="c">
+      <div class="nav">
+        <div onclick="location.href='Dashboard-Driver.html'" class="nav-item one d-flex flex-row">
+          <img src="world.png" class="img1">
+          <p class="tt">DASHBOARD</p>
+        </div>
+        <div onclick="location.href='Dashboard_AssignedTrips-Driver.html'" class="nav-item two d-flex flex-row">
+          <img src="notepad.png" class="img1">
+          <p class="tt">ASSIGNED TRIPS</p>
+        </div>
+        <div onclick="location.href='Dashboard_CompletedTrips-Driver.html'" class="nav-item three d-flex flex-row">
+          <img src="icon1.png" class="img1">
+          <p class="tt">COMPLETED TRIPS</p>
+        </div>
+        <div onclick="location.href='canceltrips.html'" class="nav-item active five d-flex flex-row">
+          <img src="icon3.png" class="img1">
+          <p class="tt">CANCELLED TRIPS</p>
+        </div>
+        <div onclick="location.href='Helpdesk.html'" class="nav-item six d-flex flex-row">
+          <img src="help desk.png" class="img1">
+          <p class="tt">HELP DESK</p>
+        </div>
+      </div>
+
+      <div class="bottom-nav">
+        <div onclick="location.href='DriverAccountInfo.html'" class="nav-item three d-flex flex-row">
+          <img src="account (2).png" class="img1">
+          <p class="tt">ACCOUNT</p>
+        </div>
+        <div onclick="location.href='index.html'" class="nav-item four d-flex flex-row">
+          <img src="logout.png" class="img1">
+          <p class="tt">LOGOUT</p>
+        </div>
       </div>
     </div>
-    </aside>
+  </div>
   <main class="main-content" role="main">
     <div class="page-header">
       <div>
@@ -75,7 +80,6 @@
     <div class="trip-grid" id="cancelled-trips-grid">
       <!-- Populated by DriverCancelledTrips.js -->
       <div class="empty-state">
-        <div class="empty-icon">⏳</div>
         <p>Loading cancelled trips...</p>
       </div>
     </div>

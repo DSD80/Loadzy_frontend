@@ -15,16 +15,15 @@
   align-items: center;
   gap: 18px;
   padding: 24px 24px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 14px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 10px;
   text-decoration: none;
-  color: inherit;
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.28);
 }
 .overview-card:hover {
   transform: translateY(-3px);

@@ -57,7 +57,7 @@ function setProfilePhoto(user) {
   const profileImg = document.querySelector(".profile");
   const photoUrl = user?.profile?.photoUrl;
   if (profileImg) {
-    profileImg.src = photoUrl ? `${LOADZY_API_URL}${photoUrl}` : "prf1.png";
+    profileImg.src = photoUrl ? `${LOADZY_API_URL}${photoUrl}` : "account (2).png";
     profileImg.style.objectFit = "cover";
   }
 }

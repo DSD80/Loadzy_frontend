@@ -3,7 +3,6 @@ async function fetchCompletedTrips() {
   if (!container) return;
   container.innerHTML = `
     <div class="empty-state" style="grid-column:1/-1">
-      <div class="empty-icon">⏳</div>
       <p>Loading completed trips...</p>
     </div>`;
   try {
@@ -12,7 +11,6 @@ async function fetchCompletedTrips() {
     if (!completedTrips.length) {
       container.innerHTML = `
         <div class="empty-state">
-          <div class="empty-icon">✅</div>
           <p>No completed trips yet.</p>
         </div>`;
       return;
@@ -40,7 +38,6 @@ async function fetchCompletedTrips() {
   } catch (err) {
     container.innerHTML = `
       <div class="empty-state">
-        <div class="empty-icon">⚠️</div>
         <p>${err.message}</p>
       </div>`;
   }
